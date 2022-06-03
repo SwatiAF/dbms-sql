@@ -25,6 +25,8 @@ desc person;
 insert into person values ('di001', 'abc', 'abc');
 insert into person values ('di002', 'acc', 'acc');
 insert into person values ('di003', 'adc', 'adc');
+insert into person values ('di004', 'aec', 'aec');
+insert into person values ('di005', 'afc', 'afc');
 desc person;
 
 /*displays the contents of the table 'person'
@@ -34,6 +36,8 @@ desc person;
 | di001     | abc  | abc     |
 | di002     | acc  | acc     |
 | di003     | adc  | adc     |
+| di004     | aec  | aec     |
+| di005     | afc  | afc     |
 +-----------+------+---------+
 */
 select * from person;
@@ -54,6 +58,8 @@ desc car;
 insert into car values ('cn001', 'a', 2020);
 insert into car values ('cn002', 'b', 2020);
 insert into car values ('cn003', 'c', 2020);
+insert into car values ('cn004', 'd', 2021);
+insert into car values ('cn005', 'e', 2021);
 desc car;
 
 /*displays the contents of the table 'car'
@@ -63,6 +69,8 @@ desc car;
 | cn001 | a     | 2020 |
 | cn002 | b     | 2020 |
 | cn003 | c     | 2020 |
+| cn004 | d     | 2021 |
+| cn005 | e     | 2021 |
 +-------+-------+------+
 */
 select * from car;
@@ -83,6 +91,8 @@ desc accident;
 insert into accident values ('00101', '2020-06-02', 'pqr');
 insert into accident values ('00102', '2020-06-02', 'pqr1');
 insert into accident values ('00103', '2020-06-02', 'pqr2');
+insert into accident values ('00104', '2020-06-03', 'pqr3');
+insert into accident values ('00105', '2020-06-03', 'pqr4');
 desc accident;
 
 /*displays the contents of the table accident
@@ -92,6 +102,8 @@ desc accident;
 |       101 | 2020-06-02 | pqr      |
 |       102 | 2020-06-02 | pqr1     |
 |       103 | 2020-06-02 | pqr2     |
+|       104 | 2020-06-03 | pqr3     |
+|       105 | 2020-06-03 | pqr4     |
 +-----------+------------+----------+
 */ 
 select * from accident;
@@ -113,6 +125,8 @@ desc owner;
 insert into owner values ('di001', 'cn001');
 insert into owner values ('di002', 'cn002');
 insert into owner values ('di003', 'cn003');
+insert into owner values ('di004', 'cn004');
+insert into owner values ('di005', 'cn005');
 desc owner;
 
 /*displays the contents of the table 'car'
@@ -122,6 +136,8 @@ desc owner;
 | di001     | cn001 |
 | di002     | cn002 |
 | di003     | cn003 |
+| di004     | cn004 |
+| di005     | cn005 |
 +-----------+-------+
 */
 select * from owner;
@@ -146,6 +162,8 @@ desc participated;
 insert into participated values ('di001', 'cn001', '00101', 1000);
 insert into participated values ('di002', 'cn002', '00102', 5000);
 insert into participated values ('di003', 'cn003', '00103', 6000);
+insert into participated values ('di004', 'cn004', '00104', 4000);
+insert into participated values ('di005', 'cn005', '00105', 8000);
 desc participated;
 
 /*displays the contents of the table 'participated'.
@@ -155,6 +173,20 @@ desc participated;
 | di001     | cn001 |       101 |          1000 |
 | di002     | cn002 |       102 |          5000 |
 | di003     | cn003 |       103 |          6000 |
+| di004     | cn004 |       104 |          4000 |
+| di005     | cn005 |       105 |          8000 |
 +-----------+-------+-----------+---------------+
 */
 select * from participated;
+
+/*update the damage amount for the car with a specific Regno in the accident with report number 12 to 25000.*/
+
+/*add a new accident to the database.*/
+
+/*find the total number of people who owned cars that involved in accidents in 2008.*/
+
+/*find the number of accidents in which cars belonging to a specific model were involved.*/
+
+
+
+

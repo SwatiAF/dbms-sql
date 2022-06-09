@@ -22,3 +22,13 @@ primary key(accno));
 
 alter table accounts 
 add foreign key (branch_name) references branch(branch_name) on delete cascade;
+
+create table depositor (customer_name varchar(20), customer_street varchar(10), customer_city varchar(20));
+
+create table loan (loan_no int primary key, branch_name varchar(20), amount int,
+foreign key(branch_name) references branch(branch_name) on delete cascade);
+
+create table borrower (customer_name varchar(20), loan_no int,
+primary key(customer_name, loan_no),
+foreign key (customer_name) references depositor(customer_name) on delete cascade,
+foreign key (loan_no) references loan(loan_no) on delete cascade);

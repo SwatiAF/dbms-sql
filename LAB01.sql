@@ -196,8 +196,16 @@ where regno IN
     (select report_no 
      from accident
      where date > '2008-01-01' and date < '2008-12-31'));
+/*
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+*/
      
 /*find the number of accidents in which cars belonging to a specific model were involved.*/
+/*ERROR*/
 select count(report_no) 
 from accident
 where regno IN

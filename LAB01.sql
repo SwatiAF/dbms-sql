@@ -139,7 +139,7 @@ insert into owner values ('di005', 'cn005');
 select * from owner;
 
 /*creates a table 'participated' with 'driver_id', 'regno', 'report_no' as Foreign keys*/
-create table participated (driver_id char(10) , regno char(10), report_no int, damage_amount int),
+create table participated (driver_id char(10) , regno char(10), report_no int, damage_amount int,
 foreign key(driver_id) references person(driver_id) on delete cascade,        /*foreign key for 'driver_no' column from 'person' table*/
 foreign key (regno) references car(regno) on delete cascade,                  /*foreign key for 'regno' column from 'car' table*/
 foreign key (report_no) references accident(report_no) on delete cascade);    /*foreign key for 'report_no' column from 'accident' table*/

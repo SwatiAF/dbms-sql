@@ -27,7 +27,6 @@ insert into person values ('di002', 'acc', 'acc');
 insert into person values ('di003', 'adc', 'adc');
 insert into person values ('di004', 'aec', 'aec');
 insert into person values ('di005', 'afc', 'afc');
-desc person;
 
 /*displays the contents of the table 'person'
 +-----------+------+---------+
@@ -43,7 +42,7 @@ desc person;
 select * from person;
 
 /*creates a table'car' with 'regno' as primary key*/
-create table car (regno char(10) primary key, model varchar(20), year int(4));
+create table car (regno char(10) primary key, model varchar(20), year int);
 
 /*displays the metadata of the table 'car'
 +-------+-------------+------+-----+---------+-------+
@@ -60,7 +59,6 @@ insert into car values ('cn002', 'b', 2020);
 insert into car values ('cn003', 'c', 2020);
 insert into car values ('cn004', 'd', 2021);
 insert into car values ('cn005', 'e', 2021);
-desc car;
 
 /*displays the contents of the table 'car'
 +-------+-------+------+
@@ -76,7 +74,7 @@ desc car;
 select * from car;
 
 /*creates a table 'accident' with 'report_no' as primary key*/
-create table accident (report_no int(5) primary key, date date, location varchar(50));
+create table accident (report_no int primary key, date date, location varchar(50));
 
 /*displays the metadata of the table 'accident'
 +-----------+-------------+------+-----+---------+-------+
@@ -88,12 +86,11 @@ create table accident (report_no int(5) primary key, date date, location varchar
 +-----------+-------------+------+-----+---------+-------+
 */
 desc accident;
-insert into accident values ('00101', '2020-06-02', 'pqr');
-insert into accident values ('00102', '2020-06-02', 'pqr1');
-insert into accident values ('00103', '2020-06-02', 'pqr2');
-insert into accident values ('00104', '2020-06-03', 'pqr3');
-insert into accident values ('00105', '2020-06-03', 'pqr4');
-desc accident;
+insert into accident values (00101, '2020-06-02', 'pqr');
+insert into accident values (00102, '2020-06-02', 'pqr1');
+insert into accident values (00103, '2020-06-02', 'pqr2');
+insert into accident values (00104, '2020-06-03', 'pqr3');
+insert into accident values (00112, '2020-06-03', 'pqr4');
 
 /*displays the contents of the table accident
 +-----------+------------+----------+
@@ -103,15 +100,15 @@ desc accident;
 |       102 | 2020-06-02 | pqr1     |
 |       103 | 2020-06-02 | pqr2     |
 |       104 | 2020-06-03 | pqr3     |
-|       105 | 2020-06-03 | pqr4     |
+|       112 | 2020-06-03 | pqr4     |
 +-----------+------------+----------+
 */ 
 select * from accident;
 
 /*creates a table called 'owner' with 'driver_no' as primary key, and 'driver_no' from table 'person' & 'regno' from table 'car' as Foreign Keys*/
 create table owner (driver_id char(10) primary key, regno char(10),
-foreign key(driver_id) references person(driver_id) on delete cascade,        --foreign key for 'driver_no' column from 'person' table.
-foreign key (regno) references car(regno) on delete cascade);                 --foreign key for 'regno' cloumn from 'car' table.
+foreign key(driver_id) references person(driver_id) on delete cascade,        /*foreign key for 'driver_no' column from 'person' table*/
+foreign key (regno) references car(regno) on delete cascade);                 /*foreign key for 'regno' cloumn from 'car' table*/
 
 /*displays the metadata of the table 'owner'
 +-----------+----------+------+-----+---------+-------+
@@ -127,7 +124,6 @@ insert into owner values ('di002', 'cn002');
 insert into owner values ('di003', 'cn003');
 insert into owner values ('di004', 'cn004');
 insert into owner values ('di005', 'cn005');
-desc owner;
 
 /*displays the contents of the table 'car'
 +-----------+-------+
@@ -143,7 +139,7 @@ desc owner;
 select * from owner;
 
 /*creates a table 'participated' with 'driver_id', 'regno', 'report_no' as Foreign keys*/
-create table participated (driver_id char(10) , regno char(10), report_no int(5), damage_amount int(7),
+create table participated (driver_id char(10) , regno char(10), report_no int, damage_amount int),
 foreign key(driver_id) references person(driver_id) on delete cascade,        /*foreign key for 'driver_no' column from 'person' table*/
 foreign key (regno) references car(regno) on delete cascade,                  /*foreign key for 'regno' column from 'car' table*/
 foreign key (report_no) references accident(report_no) on delete cascade);    /*foreign key for 'report_no' column from 'accident' table*/
@@ -159,12 +155,11 @@ foreign key (report_no) references accident(report_no) on delete cascade);    /*
 +---------------+----------+------+-----+---------+-------+
 */
 desc participated;
-insert into participated values ('di001', 'cn001', '00101', 1000);
-insert into participated values ('di002', 'cn002', '00102', 5000);
-insert into participated values ('di003', 'cn003', '00103', 6000);
-insert into participated values ('di004', 'cn004', '00104', 4000);
-insert into participated values ('di005', 'cn005', '00105', 8000);
-desc participated;
+insert into participated values ('di001', 'cn001', 00101, 1000);
+insert into participated values ('di002', 'cn002', 00102, 5000);
+insert into participated values ('di003', 'cn003', 00103, 6000);
+insert into participated values ('di004', 'cn004', 00104, 4000);
+insert into participated values ('di005', 'cn005', 00112, 8000);
 
 /*displays the contents of the table 'participated'.
 +-----------+-------+-----------+---------------+
@@ -174,7 +169,7 @@ desc participated;
 | di002     | cn002 |       102 |          5000 |
 | di003     | cn003 |       103 |          6000 |
 | di004     | cn004 |       104 |          4000 |
-| di005     | cn005 |       105 |          8000 |
+| di005     | cn005 |       112 |          8000 |
 +-----------+-------+-----------+---------------+
 */
 select * from participated;

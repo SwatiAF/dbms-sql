@@ -144,9 +144,9 @@ select * from owner;
 
 /*creates a table 'participated' with 'driver_id', 'regno', 'report_no' as Foreign keys*/
 create table participated (driver_id char(10) , regno char(10), report_no int(5), damage_amount int(7),
-foreign key(driver_id) references person(driver_id) on delete cascade,        --foreign key for 'driver_no' column from 'person' table.
-foreign key (regno) references car(regno) on delete cascade,                  --foreign key for 'regno' column from 'car' table.
-foreign key (report_no) references accident(report_no) on delete cascade);    --foreign key for 'report_no' column from 'accident' table.
+foreign key(driver_id) references person(driver_id) on delete cascade,        /*foreign key for 'driver_no' column from 'person' table*/
+foreign key (regno) references car(regno) on delete cascade,                  /*foreign key for 'regno' column from 'car' table*/
+foreign key (report_no) references accident(report_no) on delete cascade);    /*foreign key for 'report_no' column from 'accident' table*/
 
 /*displays the metadata of the table 'participated'
 +---------------+----------+------+-----+---------+-------+
@@ -180,13 +180,38 @@ desc participated;
 select * from participated;
 
 /*update the damage amount for the car with a specific Regno in the accident with report number 12 to 25000.*/
+update participated
+set damage_amount = 25000
+where report_no = 00112;
 
 /*add a new accident to the database.*/
+select * from participated;
+select * from accident;
+
+insert into accident values ('00113', '2020-06-05', 'pqr5');
+select * from accident;
 
 /*find the total number of people who owned cars that involved in accidents in 2008.*/
-
+select count(*) 
+from owner
+where regno IN
+  (select regno
+   from participated
+   where report_no IN
+    (select report_no 
+     from accident
+     where date > '2008-01-01' and date < '2008-12-31'));
+     
 /*find the number of accidents in which cars belonging to a specific model were involved.*/
-
+select count(report_no) 
+from accident
+where regno IN
+  (select regno 
+   from participated
+   where model IN 
+    (select model 
+     from car
+     where model = 'b'));
 
 
 

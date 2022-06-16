@@ -25,6 +25,9 @@ add foreign key (branch_name) references branch(branch_name) on delete cascade;
 
 create table depositor (customer_name varchar(20), customer_street varchar(10), customer_city varchar(20));
 
+alter table depositor
+add primary key(customer_name);
+
 create table loan (loan_no int primary key, branch_name varchar(20), amount int,
 foreign key(branch_name) references branch(branch_name) on delete cascade);
 

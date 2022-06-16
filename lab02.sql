@@ -32,3 +32,13 @@ create table borrower (customer_name varchar(20), loan_no int,
 primary key(customer_name, loan_no),
 foreign key (customer_name) references depositor(customer_name) on delete cascade,
 foreign key (loan_no) references loan(loan_no) on delete cascade);
+
+/*
+When creating foreign keys be sure the columns you are using have the same:
+- Data Type
+- Collation
+- Zero Fill
+- Not Null
+- Unsigned
+- Binary
+*/

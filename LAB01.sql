@@ -105,8 +105,8 @@ insert into accident values (00112, '2020-06-03', 'pqr4');
 */ 
 select * from accident;
 
-/*creates a table called 'owner' with 'driver_no' as primary key, and 'driver_no' from table 'person' & 'regno' from table 'car' as Foreign Keys*/
-create table owner (driver_id char(10) primary key, regno char(10),
+/*creates a table called 'owns' with 'driver_no' as primary key, and 'driver_no' from table 'person' & 'regno' from table 'car' as Foreign Keys*/
+create table owns (driver_id char(10) primary key, regno char(10),
 foreign key(driver_id) references person(driver_id) on delete cascade,        /*foreign key for 'driver_no' column from 'person' table*/
 foreign key (regno) references car(regno) on delete cascade);                 /*foreign key for 'regno' cloumn from 'car' table*/
 
@@ -118,12 +118,12 @@ foreign key (regno) references car(regno) on delete cascade);                 /*
 | regno     | char(10) | YES  | MUL | NULL    |       |
 +-----------+----------+------+-----+---------+-------+
 */
-desc owner;
-insert into owner values ('di001', 'cn001');
-insert into owner values ('di002', 'cn002');
-insert into owner values ('di003', 'cn003');
-insert into owner values ('di004', 'cn004');
-insert into owner values ('di005', 'cn005');
+desc owns;
+insert into owns values ('di001', 'cn001');
+insert into owns values ('di002', 'cn002');
+insert into owns values ('di003', 'cn003');
+insert into owns values ('di004', 'cn004');
+insert into owns values ('di005', 'cn005');
 
 /*displays the contents of the table 'car'
 +-----------+-------+
@@ -136,7 +136,7 @@ insert into owner values ('di005', 'cn005');
 | di005     | cn005 |
 +-----------+-------+
 */
-select * from owner;
+select * from owns;
 
 /*creates a table 'participated' with 'driver_id', 'regno', 'report_no' as Foreign keys*/
 create table participated (driver_id char(10) , regno char(10), report_no int, damage_amount int,
@@ -188,7 +188,7 @@ select * from accident;
 
 /*find the total number of people who owned cars that involved in accidents in 2008.*/
 select count(*) 
-from owner
+from owns
 where regno IN
   (select regno
    from participated

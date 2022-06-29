@@ -32,16 +32,16 @@ insert into accounts values (123005, 'branch5', 456976);
 
 select * from accounts;
 
-create table depositor (customer_name varchar(50), customer_street varchar(50), customer_city varchar(50));
+create table depositor (accno int, customer_name varchar(50), customer_street varchar(50), customer_city varchar(50));
 
 alter table depositor
-add primary key(customer_name, customer_street);
+add primary key(accno);
 
-insert into depositor values ('name1', 'street1', 'city1');
-insert into depositor values ('name2', 'street2', 'city2');
-insert into depositor values ('name3', 'street3', 'city3');
-insert into depositor values ('name4', 'street4', 'city4');
-insert into depositor values ('name5', 'street5', 'city5');
+insert into depositor values (123001, 'name1', 'street1', 'city1');
+insert into depositor values (123002, 'name2', 'street2', 'city2');
+insert into depositor values (123003, 'name3', 'street3', 'city3');
+insert into depositor values (123004, 'name4', 'street4', 'city4');
+insert into depositor values (123005, 'name5', 'street5', 'city5');
 
 select * from depositor;
 

@@ -2,7 +2,7 @@ create database swatiBankEnterprise;
 
 use swatiBankEnterprise;
 
-create table branch (branch_name varchar(20), branch_city varchar(10), assets int);
+create table branch (branch_name varchar(50), branch_city varchar(50), assets int);
 
 alter table branch 
 add primary key(branch_name);
@@ -17,7 +17,7 @@ insert into branch values ('main', 'city6', 28522);
 select * from branch;
 
 create table accounts (accno int, 
-branch_name varchar(20), 
+branch_name varchar(50), 
 balance int,
 primary key(accno));
 
@@ -32,7 +32,7 @@ insert into accounts values (123005, 'branch5', 456976);
 
 select * from accounts;
 
-create table depositor (customer_name varchar(20), customer_street varchar(10), customer_city varchar(20));
+create table depositor (customer_name varchar(50), customer_street varchar(50), customer_city varchar(50));
 
 alter table depositor
 add primary key(customer_name);
@@ -45,7 +45,7 @@ insert into depositor values ('name5', 'street5', 'city5');
 
 select * from depositor;
 
-create table loan (loan_no int primary key, branch_name varchar(20), amount int,
+create table loan (loan_no int primary key, branch_name varchar(50), amount int,
 foreign key(branch_name) references branch(branch_name) on delete cascade);
 
 insert into loan values (45001, 'branch1', 78945);
@@ -56,7 +56,7 @@ insert into loan values (45005, 'branch5', 11945);
 
 select * from loan;
 
-create table borrower (customer_name varchar(20), loan_no int,
+create table borrower (customer_name varchar(50), loan_no int,
 primary key(customer_name, loan_no),
 foreign key (customer_name) references depositor(customer_name) on delete cascade,
 foreign key (loan_no) references loan(loan_no) on delete cascade);

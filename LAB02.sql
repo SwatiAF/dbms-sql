@@ -69,13 +69,3 @@ insert into borrower values ('name5', 45005);
 
 select * from borrower;
 
-
-/*
-When creating foreign keys be sure the columns you are using have the same:
-- Data Type
-- Collation
-- Zero Fill
-- Not Null
-- Unsigned
-- Binary
-*/

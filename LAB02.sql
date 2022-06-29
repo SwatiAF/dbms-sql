@@ -35,7 +35,7 @@ select * from accounts;
 create table depositor (customer_name varchar(50), customer_street varchar(50), customer_city varchar(50));
 
 alter table depositor
-add primary key(customer_name);
+add primary key(customer_name, customer_street);
 
 insert into depositor values ('name1', 'street1', 'city1');
 insert into depositor values ('name2', 'street2', 'city2');

@@ -1,3 +1,5 @@
+/*23/06/2022*/
+
 create database swatiSuppliers;
 use swatiSuppliers;
 
@@ -31,14 +33,28 @@ insert into catalog values(10004, 20004, 2000);
 insert into catalog values(10005, 20005, 67999);
 select * from catalog;
 
+/*pnames of parts for which there is some supplier.*/
 select pname 
 from parts 
 where pid IN 
-(select pid
-from catalog
-where exists
-(select * 
-from suppliers));
+  (select pid
+  from catalog
+  where exists
+    (select * 
+    from suppliers));
+
+/*snames of suppliers who supply every part.*/
+
+/*snames of suppliers who supply every red part.*/
+
+/*pnames of parts supplied by Acme Widget Suppliers and by no one else.*/
+
+/*sids of suppliers who charge more for some part than the average cost of that part (averaged over
+all the suppliers who supply that part).*/
+
+/*For each part, find the sname of the supplier who charges the most for that part.*/
+
+/*sids of suppliers who supply only red parts.*/
 
 
 

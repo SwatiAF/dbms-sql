@@ -75,3 +75,24 @@ WHERE c.eid=e.eid and e.salary in  (
 	SELECT e1.salary 
     FROM employee e1, employee e
 	WHERE e1.salary > 50000);
+	
+/*
+create table emp_flight( 
+flno int,
+eid int, 
+aid int,
+primary key(flno, eid, aid),
+foreign key (flno) references flights(flno) on delete cascade,
+foreign key (eid) references employee(eid) on delete cascade,
+foreign key (aid) references aircraft(aid) on delete cascade);
+
+drop table emp_flight;
+
+insert into emp_flight values(1001, 701, 101);
+insert into emp_flight values(1002, 702, 102);
+insert into emp_flight values(1003, 703, 103);
+insert into emp_flight values(1004, 704, 104);
+insert into emp_flight values(1005, 705, 105);
+insert into emp_flight values(1006, 706, 106);
+insert into emp_flight values(1007, 707, 107);
+*/

@@ -60,5 +60,9 @@ insert into flights values(1005, 'city4', 'city6', 2500, timestamp '2005-05-13 0
 insert into flights values(1006, 'city5', 'city1', 2500, timestamp '2005-05-13 10:15:00', timestamp '2005-05-13 16:15:00', 6000);
 insert into flights values(1007, 'city6', 'city2', 2500, timestamp '2005-05-13 11:15:00', timestamp '2005-05-13 17:15:00', 2000);
 
-
-
+select distinct a.aname 
+from aircraft a, certified c, employee e
+where a.aid = c.aid and e.eid = c.eid and e.salary in (
+	select e1.salary 
+    from employee e1
+    where e1.eid = c.eid and e1.salary > 50000);

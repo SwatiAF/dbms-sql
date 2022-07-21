@@ -50,7 +50,7 @@ insert into certified values(701, 101);
 insert into certified values(702, 102);
 insert into certified values(703, 103);
 insert into certified values(704, 104);
-insert into certified values(705, 105);
+insert into certified values(705, 104);
 insert into certified values(706, 106);
 insert into certified values(707, 107);
 insert into certified values(708, 108);
@@ -136,4 +136,13 @@ where aid = (
 			select min(price)
 			from flights
 			where origin = 'bangalore' and destination = 'delhi')));
+			
+			
+/*4th query*/
+select a.aname, avg(salary)
+from aircraft a, certified c, emloyee e
+where a.aid = c.aid and e.eid = c.eid and c.aid in (
+	select aaid
+	from aircraft
+	where cruising _range > 3500);
 		

@@ -107,3 +107,16 @@ insert into emp_flight values(1005, 705, 105);
 insert into emp_flight values(1006, 706, 106);
 insert into emp_flight values(1007, 707, 107);
 */
+
+/*2nd query*/
+select c.eid, max(cruising_range)
+from aircraft a, certified c, employee e
+where c.eid = e.eid and ename = (
+	select ename 
+	from employee 
+	where eid in (
+		select eid
+		from certified
+		group by eid
+		having count(eid) > 2));
+		

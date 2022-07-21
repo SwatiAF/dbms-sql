@@ -68,7 +68,7 @@ where a.aid = c.aid and e.eid = c.eid and e.salary in (
     from employee e1
     where e1.eid = c.eid and e1.salary > 50000);
 
-/*query 1 --> 0 rows returned*/
+/*query 1 --> returns values*/
 SELECT DISTINCT a.aname 
 FROM aircraft a, certified c, employee e
 WHERE c.eid=e.eid and e.salary in  (

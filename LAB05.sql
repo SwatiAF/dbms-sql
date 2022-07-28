@@ -142,7 +142,22 @@ where aid = (
 select a.aname, avg(salary)
 from aircraft a, certified c, emloyee e
 where a.aid = c.aid and e.eid = c.eid and c.aid in (
-	select aaid
+	select aid
 	from aircraft
 	where cruising _range > 3500);
-		
+	
+/*5th query*/
+select e.ename
+from aircraft a, certified c, emloyee e
+where a.aid = c.aid and e.eid = c.eid and a.aname = 'Boeing';
+
+/*6th query*/
+
+
+/*7th query*/
+
+
+
+
+
+

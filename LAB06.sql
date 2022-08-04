@@ -14,10 +14,22 @@ primary key(order_id, item),
 foreign key (order_id) references orders(order_id) on delete cascade,
 foreign key (item_id) references item(item_id) on delete cascade);
 
-create table warehouse (ware_house int, city varchar(50), 
-primary key(warehouse));
+create table warehouse (ware_house int, city varchar(50),
+primary key(ware_house));
 
 create table shipment (order_id int, warehouse int, shipdate date,
 primary key(order_id, warehouse),
 foreign key (order_id) references orders(order_id) on delete cascade,
-foreign key (warehouse) references warehouse(warehouse) on delete cascade);
+foreign key (ware_house) references warehouse(ware_house) on delete cascade);
+
+select * from item; 
+
+insert into item values (101, 900);
+insert into item values (102, 400);
+insert into item values (103, 600);
+insert into item values (104, 200);
+
+
+
+
+
